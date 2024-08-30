@@ -17,6 +17,28 @@ tags:
 
 paths:
   /users:
+    post:
+      tags:
+        - Users
+      operationId: "UserController_register"
+      summary: "사용자 등록"
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRegistrationRequestDto"
+      responses:
+        '201':
+          description: "OK"
+        '400':
+          description: "Bad Request"
+        '404':
+          description: "Not Found"
+        '409':
+          description: "Conflict"
+        
     get:
       tags:
         - Users
@@ -186,7 +208,7 @@ paths:
     get:
       tags:
         - Activity Schedules
-        summary: 활동 일정 목록 조회
+      summary: 활동 일정 목록 조회
       responses:
         '200':
           description: Successful response
@@ -201,7 +223,7 @@ paths:
     get:
       tags:
         - Activity Schedules
-        summary: 활동 일정 상세 조회
+      summary: 활동 일정 상세 조회
       parameters:
         - name: activityScheduleId
           in: path
@@ -220,7 +242,7 @@ paths:
     patch:
       tags:
         - Activity Schedules
-        summary: 활동 일정 상태 수정
+      summary: 활동 일정 상태 수정
       parameters:
         - name: activityScheduleId
           in: path
@@ -241,7 +263,7 @@ paths:
     post:
       tags:
         - Participations
-        summary: 참가자 제외
+      summary: 참가자 제외
       parameters:
         - name: participationId
           in: path
@@ -256,7 +278,7 @@ paths:
     post:
       tags:
         - Authentication
-        summary: 로그인
+      summary: 로그인
       requestBody:
         required: true
         content:
@@ -301,6 +323,29 @@ components:
       bearerFormat: 'JWT'
       type: 'http'
   schemas:
+    UserRegistrationRequestDto:
+      type: 'object'
+      properties:
+        name:
+          type: 'string'
+        email:
+          type: 'string'
+        userType:
+          type: 'string'
+          enum:
+            - 'STUDENT'
+            - 'TEACHER'
+        generationNumber:
+          type: 'number'
+          minimum: 1
+        password:
+          type: 'string'
+      required:
+        - name
+        - email
+        - userType
+        - password
+        
     UserListResponseDto:
       type: object
       properties:
@@ -553,26 +598,3 @@ components:
           minimum: 1
       required:
         - activityId
-
-    UserRegistrationRequestDto:
-      type: 'object'
-      properties:
-        name:
-          type: 'string'
-        email:
-          type: 'string'
-        userType:
-          type: 'string'
-          enum:
-            - 'STUDENT'
-            - 'TEACHER'
-        generationNumber:
-          type: 'number'
-          minimum: 1
-        password:
-          type: 'string'
-      required:
-        - name
-        - email
-        - userType
-        - password
