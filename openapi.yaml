@@ -139,6 +139,21 @@ paths:
         - 'Participations'
       security:
         - bearer: []
+        
+  /participations/{participationId}/exclude:
+    post:
+      tags:
+        - Participations
+      summary: 참가자 제외
+      parameters:
+        - name: participationId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Participation request excluded successfully
 
   /activities:
     get:
@@ -258,21 +273,6 @@ paths:
       responses:
         '200':
           description: Activity updated successfully
-
-  /participations/{participationId}/exclude:
-    post:
-      tags:
-        - Participations
-      summary: 참가자 제외
-      parameters:
-        - name: participationId
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Participation request excluded successfully
 
   /auth/login:
     post:
@@ -593,7 +593,7 @@ components:
     ParticipationCancellationRequestDto:
       type: 'object'
       properties:
-        activityId:
+        participationId:
           type: 'number'
           minimum: 1
       required:
