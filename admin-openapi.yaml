@@ -6,6 +6,9 @@ info:
     에프터밀 관리자 API 엔드포인트(Endpoint)와 객체 정보, 파라미터, 요청 및 응답 예제를 살펴보세요.
 
 servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/doong3373/aftermeal_admin/1.0.0
   - description: AfterMeal Development API Server
     url: https://dev-api.aftermeal.online
   - description: AfterMeal Production API Server
