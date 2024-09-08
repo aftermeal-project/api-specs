@@ -440,6 +440,8 @@ components:
           type: string
         maxParticipants:
           type: integer
+        location:
+          type: string
         status:
           type: string
           enum: [SCHEDULED, IN_PROGRESS, CANCELED, COMPLETED]
