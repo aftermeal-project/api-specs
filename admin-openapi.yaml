@@ -458,25 +458,32 @@ components:
         applicationEndDate:
           type: string
           format: date-time
-        participants:
+        participations:
           type: array
           items:
             type: object
             properties:
               id:
                 type: integer
-              name:
-                type: string
-              type:
-                type: string
-                enum: [STUDENT, TEACHER]
-              generationNumber:
-                type: number
+              user:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  type:
+                    type: string
+                    enum: [STUDENT, TEACHER]
+                  generationNumber:
+                    type: number
+                required:
+                  - id
+                  - name
+                  - type
             required:
               - id
-              - name
-              - type
-              - generationNumber
+              - user
       required:
         - id
         - title
@@ -486,7 +493,7 @@ components:
         - scheduledDate
         - applicationStartDate
         - applicationEndDate
-        - participants
+        - participations
 
     ActivityUpdateDto:
       type: object

@@ -222,16 +222,16 @@ components:
           type: string
           format: date-time
       required:
-          - id
-          - title
-          - location
-          - maxParticipants
-          - currentParticipants
-          - status
-          - type
-          - scheduledDate
-          - applicationStartDate
-          - applicationEndDate
+        - id
+        - title
+        - location
+        - maxParticipants
+        - currentParticipants
+        - status
+        - type
+        - scheduledDate
+        - applicationStartDate
+        - applicationEndDate
 
     ActivityDetailResponseDto:
       type: object
@@ -244,24 +244,6 @@ components:
           type: string
         maxParticipants:
           type: integer
-        participants:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              type:
-                type: string
-                enum: [STUDNET, TEACHER]
-              generationNumber:
-                type: number
-            required:
-              - id
-              - name
-              - type
         status:
           type: string
           enum: [SCHEDULED, IN_PROGRESS, CANCELED, COMPLETED]
@@ -277,17 +259,43 @@ components:
         applicationEndDate:
           type: string
           format: date-time
+        participations:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              user:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  type:
+                    type: string
+                    enum: [STUDENT, TEACHER]
+                  generationNumber:
+                    type: number
+                required:
+                  - id
+                  - name
+                  - type
+            required:
+              - id
+              - user
       required:
         - id
         - title
         - location
         - maxParticipants
-        - participants
         - status
         - type
         - scheduledDate
         - applicationStartDate
         - applicationEndDate
+        - participations
 
     ParticipationApplicationRequestDto:
       type: object
