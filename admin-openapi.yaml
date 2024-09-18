@@ -21,8 +21,6 @@ tags:
     description: 활동 관련 엔드포인트
   - name: Activity Locations
     description: 활동 장소 관련 엔드포인트
-  - name: Participations
-    description: 참가 관련 엔드포인트
 
 paths:
   /admin/users:
@@ -207,7 +205,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ActivityLocationListResponseDto"
-    
+
   /admin/activity-locations/{activityLocationId}:
     patch:
       tags:
@@ -250,27 +248,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ActivityLocationListResponseDto"
-
-  /admin/participations/{participationId}:
-    delete:
-      tags:
-        - Participations
-      summary: 참가 취소
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: participationId
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        204:
-          description: Participation canceled successfully
-        400:
-          description: Bad Request
-        404:
-          description: Not Found
 
 components:
   securitySchemes:
