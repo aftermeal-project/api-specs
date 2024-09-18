@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: AfterMeal API Admin Docs
   description: |
-    에프터밀 관리자 API 엔드포인트(Endpoint)와 객체 정보, 파라미터, 요청 및 응답 예제를 살펴보세요.
+    에프터밀 관리자 전용 API 엔드포인트(Endpoint)와 객체 정보, 파라미터, 요청 및 응답 예제를 살펴보세요.
 
 servers:
   # Added by API Auto Mocking Plugin
@@ -23,8 +23,6 @@ tags:
     description: 활동 장소 관련 엔드포인트
   - name: Participations
     description: 참가 관련 엔드포인트
-  - name: Authentication
-    description: 인증 관련 엔드포인트
 
 paths:
   /admin/users:
@@ -274,47 +272,6 @@ paths:
         404:
           description: Not Found
 
-  /auth/login:
-    post:
-      tags:
-        - Authentication
-      summary: 로그인
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LoginRequestDto"
-      responses:
-        200:
-          description: Login successful
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/LoginResponseDto"
-
-  /auth/refresh:
-    post:
-      operationId: AuthController_refresh
-      summary: 토큰 갱신
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TokenRefreshRequestDto"
-      responses:
-        201:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TokenRefreshResponseDto"
-        400:
-          description: Bad Request
-      tags:
-        - Authentication
-
 components:
   securitySchemes:
     bearerAuth:
@@ -558,69 +515,3 @@ components:
       properties:
         name:
           type: string
-
-    LoginRequestDto:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-      required:
-        - email
-        - password
-
-    LoginResponseDto:
-      type: object
-      properties:
-        accessToken:
-          type: string
-        tokenType:
-          type: string
-        expiredIn:
-          type: integer
-        refreshToken:
-          type: string
-        user:
-          type: object
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-            roles:
-              type: array
-              items:
-                type: string
-                enum: [USER, ADMIN]
-      required:
-        - accessToken
-        - tokenType
-        - expiredIn
-        - refreshToken
-        - user
-
-    TokenRefreshRequestDto:
-      type: object
-      properties:
-        refreshToken:
-          type: string
-      required:
-        - refreshToken
-
-    TokenRefreshResponseDto:
-      type: object
-      properties:
-        accessToken:
-          type: string
-        tokenType:
-          type: string
-        expiredIn:
-          type: number
-        refreshToken:
-          type: string
-      required:
-        - accessToken
-        - tokenType
-        - expiredIn
-        - refreshToken
