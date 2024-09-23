@@ -514,8 +514,8 @@ components:
         maxParticipants:
           type: integer
           minimum: 1
-        location:
-          type: string
+        activityLocationId:
+          type: integer
         type:
           type: string
           enum: [ LUNCH, DINNER ]
@@ -525,11 +525,11 @@ components:
       required:
         - title
         - maxParticipants
-        - location
+        - activityLocationId
         - type
         - scheduledDate
 
-    ActivityDetailListResponseDto:
+    ActivitySummaryResponseDto:
       type: object
       properties:
         id:
@@ -568,70 +568,6 @@ components:
         - scheduledDate
         - applicationStartDate
         - applicationEndDate
-
-    ActivityUpdateDto:
-      type: object
-      properties:
-        title:
-          type: string
-        maxParticipants:
-          type: integer
-          minimum: 1
-        location:
-          type: string
-        status:
-          type: string
-          enum: [ SCHEDULED, IN_PROGRESS, CANCELED, COMPLETED ]
-        type:
-          type: string
-          enum: [ LUNCH, DINNER ]
-        scheduledDate:
-          type: string
-          format: date
-        applicationStartDate:
-          type: string
-          format: date-time
-        applicationEndDate:
-          type: string
-          format: date-time
-
-    ActivityLocationCreationRequestDto:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-        - name
-
-    ActivityLocationCreationResponseDto:
-      type: object
-      properties:
-        id:
-          type: number
-          minimum: 1
-        name:
-          type: string
-      required:
-        - id
-        - name
-
-    ActivityLocationListResponseDto:
-      type: object
-      properties:
-        id:
-          type: number
-          minimum: 1
-        name:
-          type: string
-      required:
-        - id
-        - name
-
-    ActivityLocationUpdateRequestDto:
-      type: object
-      properties:
-        name:
-          type: string
 
     ActivityListResponseDto:
       type: object
@@ -736,6 +672,70 @@ components:
         - applicationStartDate
         - applicationEndDate
         - participations
+
+    ActivityUpdateDto:
+      type: object
+      properties:
+        title:
+          type: string
+        maxParticipants:
+          type: integer
+          minimum: 1
+        location:
+          type: string
+        status:
+          type: string
+          enum: [ SCHEDULED, IN_PROGRESS, CANCELED, COMPLETED ]
+        type:
+          type: string
+          enum: [ LUNCH, DINNER ]
+        scheduledDate:
+          type: string
+          format: date
+        applicationStartDate:
+          type: string
+          format: date-time
+        applicationEndDate:
+          type: string
+          format: date-time
+
+    ActivityLocationCreationRequestDto:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+
+    ActivityLocationCreationResponseDto:
+      type: object
+      properties:
+        id:
+          type: number
+          minimum: 1
+        name:
+          type: string
+      required:
+        - id
+        - name
+
+    ActivityLocationListResponseDto:
+      type: object
+      properties:
+        id:
+          type: number
+          minimum: 1
+        name:
+          type: string
+      required:
+        - id
+        - name
+
+    ActivityLocationUpdateRequestDto:
+      type: object
+      properties:
+        name:
+          type: string
 
     ParticipationApplicationRequestDto:
       type: object
