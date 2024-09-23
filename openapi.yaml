@@ -40,6 +40,18 @@ paths:
       responses:
         201:
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    example: null
+                    nullable: true
         400:
           description: Bad Request
         404:
@@ -59,9 +71,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/UserListResponseDto"
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/UserListResponseDto"
+
   /users/{userId}:
     patch:
       tags:
@@ -82,7 +100,7 @@ paths:
             schema:
               $ref: "#/components/schemas/UserUpdateRequestDto"
       responses:
-        200:
+        204:
           description: User updated successfully
 
     delete:
@@ -117,6 +135,18 @@ paths:
       responses:
         201:
           description: Activity created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    example: null
+                    nullable: true
 
     get:
       tags:
@@ -128,9 +158,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/ActivityListResponseDto"
+                type: object
+                properties:
+                    success:
+                        type: boolean
+                        example: true
+                    data:
+                      type: array
+                      items:
+                        $ref: "#/components/schemas/ActivityListResponseDto"
 
   /activities/{activityId}:
     get:
@@ -149,7 +185,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ActivityDetailResponseDto"
+                type: object
+                properties:
+                    success:
+                      type: boolean
+                      example: true
+                    data:
+                      $ref: "#/components/schemas/ActivityDetailResponseDto"
+
     patch:
       tags:
         - Activities
@@ -169,7 +212,7 @@ paths:
             schema:
               $ref: "#/components/schemas/ActivityUpdateDto"
       responses:
-        200:
+        204:
           description: Activity updated successfully
 
     delete:
@@ -207,7 +250,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ActivityLocationCreationResponseDto"
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    nullable: true
+                    example: null
 
     get:
       tags:
@@ -221,7 +272,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ActivityLocationListResponseDto"
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/ActivityLocationListResponseDto"
 
   /activity-locations/{activityLocationId}:
     patch:
@@ -243,8 +302,8 @@ paths:
             schema:
               $ref: "#/components/schemas/ActivityLocationUpdateRequestDto"
       responses:
-        201:
-          description: OK
+        204:
+          description: Activity Location updated successfully
 
     delete:
       tags:
@@ -259,12 +318,8 @@ paths:
           schema:
             type: integer
       responses:
-        201:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ActivityLocationListResponseDto"
+        204:
+          description: Activity Location deleted successfully
 
   /participations:
     post:
@@ -282,6 +337,18 @@ paths:
       responses:
         201:
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    example: null
+                    nullable: true
         400:
           description: Bad Request
         404:
@@ -327,7 +394,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/LoginResponseDto"
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/LoginResponseDto"
 
   /auth/refresh:
     post:
@@ -344,7 +417,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TokenRefreshResponseDto"
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/TokenRefreshResponseDto"
         400:
           description: Bad Request
       tags:
