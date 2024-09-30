@@ -545,12 +545,6 @@ components:
         scheduledDate:
           type: string
           format: date
-        applicationStartDate:
-          type: string
-          format: date-time
-        applicationEndDate:
-          type: string
-          format: date-time
       required:
         - id
         - title
@@ -559,8 +553,6 @@ components:
         - currentParticipants
         - type
         - scheduledDate
-        - applicationStartDate
-        - applicationEndDate
 
     ActivityDetailResponseDto:
       type: object
@@ -639,12 +631,6 @@ components:
         scheduledDate:
           type: string
           format: date
-        applicationStartDate:
-          type: string
-          format: date-time
-        applicationEndDate:
-          type: string
-          format: date-time
 
     ActivityLocationCreationRequestDto:
       type: object
