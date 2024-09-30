@@ -539,9 +539,6 @@ components:
           type: integer
         currentParticipants:
           type: integer
-        status:
-          type: string
-          enum: [SCHEDULED, IN_PROGRESS, CANCELED, COMPLETED]
         type:
           type: string
           enum: [LUNCH, DINNER]
@@ -560,7 +557,6 @@ components:
         - location
         - maxParticipants
         - currentParticipants
-        - status
         - type
         - scheduledDate
         - applicationStartDate
@@ -577,9 +573,6 @@ components:
           type: string
         maxParticipants:
           type: integer
-        status:
-          type: string
-          enum: [SCHEDULED, IN_PROGRESS, CANCELED, COMPLETED]
         type:
           type: string
           enum: [LUNCH, DINNER]
@@ -623,7 +616,6 @@ components:
         - title
         - location
         - maxParticipants
-        - status
         - type
         - scheduledDate
         - applicationStartDate
@@ -641,9 +633,6 @@ components:
         locationId:
           type: integer
           minimum: 1
-        status:
-          type: string
-          enum: [ SCHEDULED, IN_PROGRESS, CANCELED, COMPLETED ]
         type:
           type: string
           enum: [ LUNCH, DINNER ]
