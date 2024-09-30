@@ -571,10 +571,10 @@ components:
         scheduledDate:
           type: string
           format: date
-        applicationStartDate:
+        applicationStartAt:
           type: string
           format: date-time
-        applicationEndDate:
+        applicationEndAt:
           type: string
           format: date-time
         participations:
@@ -610,8 +610,8 @@ components:
         - maxParticipants
         - type
         - scheduledDate
-        - applicationStartDate
-        - applicationEndDate
+        - applicationStartAt
+        - applicationEndAt
         - participations
 
     ActivityUpdateDto:
