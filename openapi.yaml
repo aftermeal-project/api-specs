@@ -493,11 +493,9 @@ components:
           type: string
         email:
           type: string
-        roles:
-          type: array
-          items:
-            type: string
-            enum: [USER, ADMIN]
+        role:
+          type: string
+          enum: [USER, ADMIN]
         type:
           type: string
           enum: [STUDENT, TEACHER]
@@ -511,7 +509,7 @@ components:
         - id
         - name
         - email
-        - roles
+        - role
         - type
         - status
         - generationNumber
@@ -733,15 +731,13 @@ components:
               type: integer
             name:
               type: string
-            roles:
-              type: array
-              items:
-                type: string
-                enum: [USER, ADMIN]
+            role:
+              type: string
+              enum: [USER, ADMIN]
           required:
             - id
             - name
-            - roles
+            - role
       required:
         - accessToken
         - tokenType
