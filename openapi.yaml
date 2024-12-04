@@ -528,6 +528,9 @@ components:
         generationNumber:
           type: integer
           minimum: 1
+        role:
+          type: string
+          enum: [USER, ADMIN]
 
     ActivityCreationRequestDto:
       type: object
