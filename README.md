@@ -1,2 +1,2 @@
-# api-specs
-애프터밀의 API 명세서를 관리하는 저장소입니다.
+# AfterMeal's OpenAPI Specification
+AfterMeal API에 대한 OpenAPI 사양이 포함된 저장소입니다.
