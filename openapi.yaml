@@ -150,6 +150,21 @@ paths:
       tags:
         - Activities
       summary: 활동 목록 조회
+      parameters:
+        - name: type
+          in: query
+          description: 활동 유형
+          required: false
+          schema:
+            type: string
+            enum: [LUNCH, DINNER]
+        - name: scheduledDate
+          in: query
+          description: 활동일자
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         200:
           description: 성공적인 응답
