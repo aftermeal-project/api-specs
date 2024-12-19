@@ -160,7 +160,7 @@ paths:
             enum: [LUNCH, DINNER]
         - name: scheduledDate
           in: query
-          description: 활동일자
+          description: 활동일자 (YYYY-MM-DD 형식)
           required: false
           schema:
             type: string
